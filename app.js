@@ -19,4 +19,3 @@ app.use('/api/products', productRoutes);
 app.use('/api/payments', paymentRoutes);
 
 module.exports = app;
-module.exports = connectDB;

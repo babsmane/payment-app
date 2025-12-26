@@ -49,3 +49,15 @@ Une API Node.js pour gérer les utilisateurs, les produits et les paiements en l
    ```bash
    git clone https://github.com/babsmane/payment-app.git
    cd payment-app
+
+2. **Installe les dépendances** :
+    npm install
+
+3. **Crée un fichier .env à la racine du projet** :
+    MONGODB_URI=mongodb+srv://<utilisateur>:<motdepasse>@cluster0.xxxxxx.mongodb.net/paiement-app?retryWrites=true&w=majority
+    STRIPE_SECRET_KEY=sk_test_xxxxxxxxxxxxxxxxxxxxxxxxx
+    JWT_SECRET=ton_secret_jwt_ici
+    PORT=3000
+    NODE_ENV=development
+
+## 

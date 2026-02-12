@@ -49,11 +49,29 @@ pipeline {
             post {
                 always {
                     junit 'reports/**/*.xml' // Rapport de tests JUnit
-                    publishHTML([
-                        reportDir: 'coverage/lcov-report',
-                        reportFiles: 'index.html',
-                        reportName: 'Code Coverage Report'
-                    ])
+                    script {
+                       if (fileExists('coverage/lcov-report/index.html')) {
+                           publishHTML([
+                               reportDir: 'coverage/lcov-report',
+                               reportFiles: 'index.html',
+                               reportName: 'Code Coverage Report',
+                               allowMissing: false,
+                               alwaysLinkToLastBuild: true,
+                               keepAll: false
+                           ])
+                       } else {
+                            echo "⚠️ Rapport de couverture non trouvé - Publication HTML ignorée"
+
+                             publishHTML([
+                                 reportDir: 'coverage/lcov-report',
+                                 reportFiles: 'index.html',
+                                 reportName: 'Code Coverage Report',
+                                 allowMissing: true,  // Évite l'échec si fichier manquant
+                                 alwaysLinkToLastBuild: false,
+                                  keepAll: false
+                             ])
+                       }
+                    }
                 }
             }
         }

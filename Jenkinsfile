@@ -12,12 +12,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/babsmane/payment-app.git'
-            }
-        }
-
         stage('Install Dependencies') {
             steps {
                 sh 'npm ci --silent || npm install'
